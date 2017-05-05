@@ -1,0 +1,122 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Metadata Explorer API",
+        "description": "DataSF's Metadata API.",
+        "version": "1.0.0"
+    },
+    "produces": [
+        "application/json"
+    ],
+    "host": "localhost:3000",
+    "basePath": "/api/v1",
+    "paths": {
+        "/datasetdetails/yitu-d5am": {
+            "get": {
+                "summary": "",
+                "description": "Returns details relating to a dataset four by four",
+                "x-swagger-router-controller": "datasetdetails",
+                "operationId": "getDatasetDetails",
+                "responses": {
+                    "200": {
+                        "description": "dataset details response",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/datasetdetails"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "datasetdetails": {
+            "type": "object",
+            "properties": {
+                "datasetid": {
+                    "type": "string"
+                },
+                "nbeid": {
+                    "type": "string"
+                },
+                "record_count": {
+                    "type": "string"
+                },
+                "field_count": {
+                    "type": "string"
+                },
+                "documented_count": {
+                    "type": "string"
+                },
+                "documented_percentage": {
+                    "type": "string"
+                },
+                "global_field_count": {
+                    "type": "string"
+                },
+                "global_field_percentage": {
+                    "type": "string"
+                },
+                "days_since_last_updated": {
+                    "type": "string"
+                },
+                "days_since_first_created": {
+                    "type": "string"
+                },
+                "department": {
+                    "type": "string"
+                },
+                "category": {
+                    "type": "string"
+                },
+                "creation_date": {
+                    "type": "string"
+                },
+                "data_change_frequency": {
+                    "type": "string"
+                },
+                "data_notes": {
+                    "type": "string"
+                },
+                "data_provided_by": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "geographic_unit": {
+                    "type": "string"
+                },
+                "keywords": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "last_update_date_data": {
+                    "type": "string"
+                },
+                "license": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "owner": {
+                    "type": "string"
+                },
+                "publishing_frequency": {
+                    "type": "string"
+                },
+                "data_dictionary_attached": {
+                    "type": "string"
+                },
+                "attachment_url": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

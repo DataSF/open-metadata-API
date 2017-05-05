@@ -1,0 +1,5 @@
+configs/socrata_config.yaml
+controllers/players.js
+node_modules/*
+npm-debug.log
+old.js
