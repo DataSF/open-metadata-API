@@ -1,4 +1,4 @@
-#Metadata Explorer API
+# Metadata Explorer API
 
 ## DataSF's Metadata API
 
@@ -6,4 +6,4 @@
 * npm install
 * npm start
 
-## [API Method Documentation] (http://localhost:3000/docs/#!/default/getDatasetDetails)
+## [API Method Documentation](http://localhost:3000/docs/#!/default/getDatasetDetails)
