@@ -1,4 +1,4 @@
-# Metadata Explorer API
+# Open Metadata API
 
 ## DataSF's Metadata API
 
