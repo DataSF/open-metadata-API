@@ -14,6 +14,14 @@ var DatasetDetails = require('./services/datasetdetails.js');
 var DatasetDetailsController = require('./controllers/datasetdetails.js');
 var dd = new DatasetDetailsController(apiRouter);
 
+
+var FieldDetails = require('./services/fielddetails.js');
+var FieldDetailsController = require('./controllers/fielddetails.js');
+var fd = new FieldDetailsController(apiRouter);
+
+
+
+
 // Swagger Docs
 var swaggerTools = require('swagger-tools');
 // swaggerRouter configuration

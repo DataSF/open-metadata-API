@@ -19,8 +19,12 @@ class DatasetDetailsController {
         if (!fbf) {
             res.sendStatus(404);
         } else {
-        mainFxn({"fbf": fbf}).then(function(result) {
-            res.send(result);
+            mainFxn({"fbf": fbf}).then(function(result) {
+                if(result.error){
+                    res.sendStatus(404);
+                    res.send(result);
+                }
+                res.send(result);
             });
         }
     }

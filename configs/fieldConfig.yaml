@@ -5,17 +5,49 @@ socrata_config_fn: /Users/j9/Desktop/metadata-explorer-api/configs/socrata_confi
 fbfs:
   datasetProfiles:
     fbf: 8ez2-fksg
-    fields: [datasetid, nbeid, record_count, field_count, documented_count, documented_percentage, global_field_count, global_field_percentage, days_since_last_updated, days_since_first_created, department]
+    fields: [datasetid, nbeid, record_count, field_count, documented_count, documented_percentage, global_field_count, global_field_percentage, days_since_last_updated, days_since_first_created, department,  dupe_record_count,  dupe_record_percent]
     idField: datasetid
+    removeFields:
     qryParams:
+  datasetProfilesIsGeo:
+    fbf: 8ez2-fksg
+    fields: [datasetid, true as hasGeo]
+    idField: datasetid
+    removeFields: [true as hasGeo]
+    qryParams: AND (point_count > 0 OR multipoint_count > 0 OR multipoint_count > 0 OR polygon_count > 0 OR multipolygon_count > 0)
   assetInventory:
     fbf: c8w6-4ptn
-    fields: [category, creation_date, data_change_frequency, data_notes,data_provided_by, description, geographic_unit, keywords, type, last_update_date_data, license, name, owner, publishing_frequency]
+    fields: [u_id as datasetid, category, creation_date, data_change_frequency, data_notes, data_provided_by, description, geographic_unit, keywords, type, last_update_date_data, license, name, owner, publishing_frequency, program_link]
     idField: u_id
+    removeFields: [u_id as datasetid]
     qryParams:
-  master_dd:
+  masterDDDataset:
     fbf: 8zp7-ik63
-    fields: [data_dictionary_attached,  attachment_url]
+    fields: [datasetid, data_dictionary_attached,  attachment_url]
     idField: datasetid
-    qryParams: limit 1
-
+    qryParams: LIMIT 1
+    removeFields:
+  masterDDField:
+    fbf: 8zp7-ik63
+    fields: [columnid, field_name, field_alias, field_type, field_definition, field_type_flag, api_key, field_documented, global_field, global_field_definition ]
+    idField: datasetid
+    removeFields:
+    qryParams:
+  fieldProfile:
+    fbf: huxb-sqsm
+    removeFields:
+    fields: [columnid, null_count, missing_count, actual_count, cardinality, completeness, distinctness, uniqueness, min_field_length, avg_field_length, max_field_length, min_value, max_value, mean, median, mode, range, is_primary_key_candidate ]
+    idField: datasetid
+    qryParams:
+  fieldProfileCategory:
+    fbf: huxb-sqsm
+    removeFields: [true as isCategory]
+    fields: [columnid, true as isCategory ]
+    idField: datasetid
+    qryParams: AND ( cardinality > 1 and cardinality <= 125)
+  fieldProfileStats:
+    fbf: huxb-sqsm
+    removeFields:
+    fields: [columnid, null_count, missing_count, actual_count, cardinality, completeness, distinctness, uniqueness, min_field_length, avg_field_length, max_field_length, min_value, max_value, mean, median, mode, range, sum, standard_deviation, variance, mean_absolute_deviation, _5, _25, _50, _75, _95, iqr, kurtosis, skewness ]
+    idField: datasetid
+    qryParams:

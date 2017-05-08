@@ -11,10 +11,10 @@
     "host": "localhost:3000",
     "basePath": "/api/v1",
     "paths": {
-        "/datasetdetails/yitu-d5am": {
+        "/datasetdetails/i98e-djp9": {
             "get": {
                 "summary": "",
-                "description": "Returns details relating to a dataset four by four",
+                "description": "Returns dataset details; uses the dataset four by four as the lookup id",
                 "x-swagger-router-controller": "datasetdetails",
                 "operationId": "getDatasetDetails",
                 "responses": {
@@ -24,6 +24,25 @@
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/datasetdetails"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/fielddetails/i98e-djp9": {
+            "get": {
+                "summary": "",
+                "description": "Returns field details for dataset",
+                "x-swagger-router-controller": "fielddetails",
+                "operationId": "getFieldDetails",
+                "responses": {
+                    "200": {
+                        "description": "field details response",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/fielddetails"
                             }
                         }
                     }
@@ -115,6 +134,98 @@
                 },
                 "attachment_url": {
                     "type": "string"
+                },
+                "hasGeo": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "fielddetails": {
+            "type": "object",
+            "properties": {
+                "columid": {
+                    "type": "string"
+                },
+                "null_count": {
+                    "type": "number"
+                },
+                "missing_count": {
+                    "type": "number"
+                },
+                "actual_count": {
+                    "type": "number"
+                },
+                "cardinality": {
+                    "type": "number"
+                },
+                "completeness": {
+                    "type": "number"
+                },
+                "distinctness": {
+                    "type": "number"
+                },
+                "uniqueness": {
+                    "type": "number"
+                },
+                "min_field_length": {
+                    "type": "number"
+                },
+                "avg_field_length": {
+                    "type": "number"
+                },
+                "max_field_length": {
+                    "type": "number"
+                },
+                "min_value": {
+                    "type": "number"
+                },
+                "max_value": {
+                    "type": "number"
+                },
+                "mean": {
+                    "type": "number"
+                },
+                "median": {
+                    "type": "number"
+                },
+                "mode": {
+                    "type": "string"
+                },
+                "range": {
+                    "type": "number"
+                },
+                "is_primary_key_candidate": {
+                    "type": "boolean"
+                },
+                "field_name": {
+                    "type": "string"
+                },
+                "field_alias": {
+                    "type": "string"
+                },
+                "field_type": {
+                    "type": "string"
+                },
+                "field_definition": {
+                    "type": "string"
+                },
+                "field_type_flag": {
+                    "type": "string"
+                },
+                "api_key": {
+                    "type": "string"
+                },
+                "field_documented": {
+                    "type": "boolean"
+                },
+                "global_field": {
+                    "type": "string"
+                },
+                "global_field_definition": {
+                    "type": "string"
+                },
+                "isCategory":{
+                    "type": "boolean"
                 }
             }
         }

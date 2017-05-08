@@ -1,42 +1,49 @@
-'use strict';
-let readYaml = require('read-yaml');
-let request = require('request-promise');
+'use strict'
+let readYaml = require('read-yaml')
+
 class UtilsService {
 
-    constructor() {
-      var fieldConfigFn = '/Users/j9/Desktop/metadata-explorer-api/configs/fieldConfig.yaml'
-      this.fieldConfigs = this.readConfigs(fieldConfigFn)
-      var socrata_config_fn = this.fieldConfigs.socrata_config_fn
-      this.socrataConfigs = this.readConfigs(socrata_config_fn)
-      this.socrataConfigs.password_ascii = new Buffer(this.socrataConfigs.password, 'base64').toString('ascii')
+  constructor () {
+    var fieldConfigFn = '/Users/j9/Desktop/metadata-explorer-api/configs/fieldConfig.yaml'
+    this.fieldConfigs = this.readConfigs(fieldConfigFn)
+    var socrataConfigFn = this.fieldConfigs.socrata_config_fn
+    this.socrataConfigs = this.readConfigs(socrataConfigFn)
+    this.socrataConfigs.password_ascii = new Buffer(this.socrataConfigs.password, 'base64').toString('ascii')
+  }
+
+  readConfigs (fn) {
+    return readYaml.sync(fn)
+  }
+
+  getFieldList (datasetName) {
+    let fields = this.fieldConfigs.fbfs[datasetName]['fields']
+    let toRemove = this.fieldConfigs.fbfs[datasetName]['removeFields']
+    if (toRemove) {
+      fields = fields.filter(function (el) {
+        return !toRemove.includes(el)
+      })
     }
+    return fields
+  }
 
-    readConfigs(fn){
-      return readYaml.sync(fn)
+  makeQry (fbf, datasetName, otherQryStuff) {
+    console.log(datasetName)
+    let baseUrl = this.fieldConfigs.baseUrl
+    let metaFbf = this.fieldConfigs.fbfs[datasetName]['fbf']
+    let fields = this.fieldConfigs.fbfs[datasetName]['fields']
+    let idField = this.fieldConfigs.fbfs[datasetName]['idField']
+    let qryParams = this.fieldConfigs.fbfs[datasetName]['qryParams']
+    fields = fields.join()
+    let qry = baseUrl + metaFbf + '.json'
+    qry = qry + '?$query=SELECT%20' + fields + '%20WHERE%20' + idField + '%20=%27'
+    qry = qry + fbf + '%27'
+    if (qryParams) {
+      qry = qry + '%20' + qryParams
     }
-
-    getFieldList(datasetName){
-      return this.fieldConfigs.fbfs[datasetName]['fields']
-    }
-
-    makeQry(fbf, datasetName, otherQryStuff){
-      let baseUrl =this.fieldConfigs.baseUrl
-      let metaFbf = this.fieldConfigs.fbfs[datasetName]['fbf']
-      let fields = this.fieldConfigs.fbfs[datasetName]['fields']
-      let idField = this.fieldConfigs.fbfs[datasetName]['idField']
-      let qryParams =  this.fieldConfigs.fbfs[datasetName]['qryParams']
-      fields = fields.join()
-      let qry = baseUrl + metaFbf  + '.json'
-      qry = qry + '?$query=SELECT%20' + fields + '%20WHERE%20' + idField +'%20=%27'
-      qry = qry + fbf +'%27'
-      if(qryParams){
-        qry = qry + '%20' + qryParams
-      }
-      console.log(qry)
-      return qry
-    }
-
-
+    console.log('*****')
+    console.log(qry)
+    console.log('*****')
+    return qry
+  }
  }
-
-module.exports = new UtilsService;
+module.exports = new UtilsService()
