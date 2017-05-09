@@ -49,6 +49,7 @@ swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
     // start the server
     let server = app.listen(3000, function () {
         let host = server.address().address
+        host = '162.243.137.94'
         host = (host === '::' ? 'localhost' : host)
         let port = server.address().port
 
