@@ -1,6 +1,6 @@
 'use strict'
 
-var FieldDetailsService = require('../services/fieldDetails.js')
+var FieldDetailsService = require('/var/www/open-metadata-API/services/fieldDetails.js')
 
 class FieldDetailsController {
 

@@ -1,6 +1,6 @@
 'use strict'
 
-var RelatedDatasetsService = require('../services/relatedDatasets.js')
+var RelatedDatasetsService = require('/var/www/open-metadata-API/services/relatedDatasets.js')
 
 class RelatedDatasetsController {
 
