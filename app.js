@@ -1,58 +1,57 @@
+let express = require('express')        // call express
+let app = express()
 
+let bodyParser = require('body-parser')
 
-var express    = require('express');        // call express
-var app        = express();
+app.use(bodyParser.json())
 
-var bodyParser = require('body-parser')
+let apiRouter = express.Router()
+app.use('/api/v1', apiRouter)
 
-app.use(bodyParser.json());
+let DatasetDetails = require('./services/datasetdetails.js')
+let DatasetDetailsController = require('./controllers/datasetdetails.js')
+let dd = new DatasetDetailsController(apiRouter)
 
-var apiRouter = express.Router();
-app.use('/api/v1', apiRouter);
+let FieldDetails = require('./services/fielddetails.js')
+let FieldDetailsController = require('./controllers/fielddetails.js')
+let fd = new FieldDetailsController(apiRouter)
 
-var DatasetDetails = require('./services/datasetdetails.js');
-var DatasetDetailsController = require('./controllers/datasetdetails.js');
-var dd = new DatasetDetailsController(apiRouter);
-
-
-var FieldDetails = require('./services/fielddetails.js');
-var FieldDetailsController = require('./controllers/fielddetails.js');
-var fd = new FieldDetailsController(apiRouter);
-
-
+let RelatedDatasets = require('./services/relatedDatasets.js')
+let RelatedDatasetsController = require('./controllers/relatedDatasets.js')
+let rd = new RelatedDatasetsController(apiRouter)
 
 
 // Swagger Docs
-var swaggerTools = require('swagger-tools');
+let swaggerTools = require('swagger-tools')
 // swaggerRouter configuration
-var options = {
+let options = {
   swaggerUi: '/swagger.json',
   controllers: './controllers'
-};
+}
 
 // The Swagger document (require it, build it programmatically, fetch it from a URL, ...)
-var swaggerDoc = require('./swagger.json');
+let swaggerDoc = require('./swagger.json')
 
 // Initialize the Swagger middleware
 swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
     // Interpret Swagger resources and attach metadata to request - must be first in swagger-tools middleware chain
-    app.use(middleware.swaggerMetadata());
+    app.use(middleware.swaggerMetadata())
 
     // Validate Swagger requests
-    app.use(middleware.swaggerValidator());
+    app.use(middleware.swaggerValidator())
 
     // Route validated requests to appropriate controller
-    app.use(middleware.swaggerRouter(options));
+    app.use(middleware.swaggerRouter(options))
 
     // Serve the Swagger documents and Swagger UI
-    app.use(middleware.swaggerUi());
+    app.use(middleware.swaggerUi())
 
     // start the server
-    var server = app.listen(3000, function () {
-        var host = server.address().address;
-        host = (host === '::' ? 'localhost' : host);
-        var port = server.address().port;
+    let server = app.listen(3000, function () {
+        let host = server.address().address
+        host = (host === '::' ? 'localhost' : host)
+        let port = server.address().port
 
-        console.log('listening at http://%s:%s', host, port);
-    });
-});
+        console.log('listening at http://%s:%s', host, port)
+    })
+})

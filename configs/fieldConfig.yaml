@@ -33,6 +33,12 @@ fbfs:
     idField: datasetid
     removeFields:
     qryParams:
+  masterDDGlobalFields:
+    fbf: 8zp7-ik63
+    fields: [field_alias]
+    idField: datasetid
+    removeFields:
+    qryParams: AND (global_field = true)
   fieldProfile:
     fbf: huxb-sqsm
     removeFields:
