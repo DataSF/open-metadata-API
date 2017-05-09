@@ -46,15 +46,7 @@ class DatasetDetailsService {
     for (let i = 0; i < datasets.length; i++) {
       let dataset = datasets[i]
       data[dataset] = function () {
-        return request({
-          'method': 'GET',
-          'auth': {
-            'username': UtilsService.socrataConfigs.username,
-            'password': UtilsService.socrataConfigs.password_ascii
-          },
-          'uri': UtilsService.makeQry(fbf, dataset),
-          'json': true
-        })
+        return request(UtilsService.getRequestOptions(fbf, dataset))
       }
     }
     function main (fbf) {

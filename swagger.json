@@ -13,7 +13,7 @@
     "paths": {
         "/datasetdetails/i98e-djp9": {
             "get": {
-                "summary": "",
+                "summary": "Returns dataset details",
                 "description": "Returns dataset details; uses the dataset four by four as the lookup id",
                 "x-swagger-router-controller": "datasetdetails",
                 "operationId": "getDatasetDetails",
@@ -32,8 +32,8 @@
         },
         "/fielddetails/i98e-djp9": {
             "get": {
-                "summary": "",
-                "description": "Returns field details for dataset",
+                "summary": "Returns field details for a given dataset",
+                "description": "Returns field details for dataset; uses the dataset four by four as the lookup id to fetch column details",
                 "x-swagger-router-controller": "fielddetails",
                 "operationId": "getFieldDetails",
                 "responses": {
@@ -43,6 +43,24 @@
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/fielddetails"
+                            }
+                        }
+                    }
+                }
+            }
+        },"/relateddatasets/i98e-djp9": {
+            "get": {
+                "summary": "Returns related datasets",
+                "description": "Returns related datasets- aka the top 50 datasets with similar global fields",
+                "x-swagger-router-controller": "relatedDatasets",
+                "operationId": "getRelatedDatasets",
+                "responses": {
+                    "200": {
+                        "description": "related dataset response",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/relateddatasets"
                             }
                         }
                     }
@@ -224,8 +242,25 @@
                 "global_field_definition": {
                     "type": "string"
                 },
-                "isCategory":{
+                "isCategory": {
                     "type": "boolean"
+                }
+            }
+        },
+        "relateddatasets": {
+            "type": "object",
+            "properties": {
+                "datasetid": {
+                    "type": "string"
+                },
+                "dataset_name": {
+                    "type": "string"
+                },
+                "global_count": {
+                    "type": "number"
+                },
+                "description": {
+                    "type": "string"
                 }
             }
         }

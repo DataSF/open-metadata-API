@@ -17,9 +17,6 @@ class FieldDetailsService {
           for (let i = 0; i < datasets.length; i++) {
             fieldList = fieldList.concat(UtilsService.getFieldList(datasets[i]))
           }
-          // for(let i = 0; i < fieldList.length; i++){
-          //  console.log( '"' + fieldList[i] + '": {"type":' +'"string"' +"},")
-          // }
           let results = allData[0]
           for (let i = 1; i < allData.length; i++) {
             results = _.map(results, function (item) {
@@ -41,15 +38,7 @@ class FieldDetailsService {
     for (let i = 0; i < datasets.length; i++) {
       let dataset = datasets[i]
       data[dataset] = function () {
-        return request({
-          'method': 'GET',
-          'auth': {
-            'username': UtilsService.socrataConfigs.username,
-            'password': UtilsService.socrataConfigs.password_ascii
-          },
-          'uri': UtilsService.makeQry(fbf, dataset),
-          'json': true
-        })
+        return request(UtilsService.getRequestOptions(fbf, dataset))
       }
     }
     function main (fbf) {
