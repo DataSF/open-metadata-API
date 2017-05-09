@@ -15,6 +15,7 @@ class FieldDetailsController {
 
   getFieldDetails (req, res) {
     let fbf = req.params.id
+    conosole.log(fbf)
     let mainFxn = FieldDetailsService.getFieldDetails(fbf)
     if (!fbf) {
       res.sendStatus(404)
