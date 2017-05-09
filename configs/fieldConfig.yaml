@@ -1,5 +1,6 @@
 baseUrl: https://data.sfgov.org/resource/
-socrata_config_fn: /Users/j9/Desktop/metadata-explorer-api/configs/socrata_config.yaml
+#socrata_config_fn: /Users/j9/Desktop/metadata-explorer-api/configs/socrata_config.yaml
+socrata_config_fn: /var/www/open-metadata-API/configs/socrata_config.yaml
 fbfs:
   datasetProfiles:
     fbf: 8ez2-fksg
