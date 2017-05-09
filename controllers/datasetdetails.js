@@ -1,6 +1,6 @@
 'use strict'
 
-var DatasetDetailsService = require('/var/www/open-metadata-API/services/datasetDetails.js')
+var DatasetDetailsService = require('/var/www/open-metadata-API/services/datasetdetails.js')
 class DatasetDetailsController {
 
   constructor (router) {
