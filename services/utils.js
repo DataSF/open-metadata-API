@@ -26,8 +26,19 @@ class UtilsService {
     return fields
   }
 
-  makeQry (fbf, datasetName, otherQryStuff) {
-    console.log(datasetName)
+  getRequestOptions (fbf, datasetname, qryOtherStuff) {
+    return {
+      'method': 'GET',
+      'auth': {
+        'username': this.socrataConfigs.username,
+        'password': this.socrataConfigs.password_ascii
+      },
+      'uri': this.makeQry(fbf, datasetname, qryOtherStuff),
+      'json': true
+    }
+  }
+
+  makeQry (fbf, datasetName, qryOtherStuff) {
     let baseUrl = this.fieldConfigs.baseUrl
     let metaFbf = this.fieldConfigs.fbfs[datasetName]['fbf']
     let fields = this.fieldConfigs.fbfs[datasetName]['fields']
@@ -35,14 +46,22 @@ class UtilsService {
     let qryParams = this.fieldConfigs.fbfs[datasetName]['qryParams']
     fields = fields.join()
     let qry = baseUrl + metaFbf + '.json'
-    qry = qry + '?$query=SELECT%20' + fields + '%20WHERE%20' + idField + '%20=%27'
-    qry = qry + fbf + '%27'
-    if (qryParams) {
-      qry = qry + '%20' + qryParams
+    if (qryOtherStuff) {
+      qry = qry + '?$query=SELECT%20' + fields + '%20WHERE%20'
+      qry = qry + '%20' + qryOtherStuff
+      if (qryParams) {
+        qry = qry + " " + qryParams
+      }
+    } else {
+      qry = qry + '?$query=SELECT%20' + fields + '%20WHERE%20' + idField + '%20=%27'
+      qry = qry + fbf + '%27'
+      if (qryParams) {
+        qry = qry + '%20' + qryParams
+      }
     }
-    console.log('*****')
-    console.log(qry)
-    console.log('*****')
+    // console.log('*****')
+    // console.log(qry)
+    // console.log('*****')
     return qry
   }
  }

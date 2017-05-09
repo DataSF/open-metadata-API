@@ -1,5 +1,3 @@
-
-
 baseUrl: https://data.sfgov.org/resource/
 socrata_config_fn: /Users/j9/Desktop/metadata-explorer-api/configs/socrata_config.yaml
 fbfs:
@@ -33,6 +31,12 @@ fbfs:
     idField: datasetid
     removeFields:
     qryParams:
+  masterDDGlobalFields:
+    fbf: 8zp7-ik63
+    fields: [field_alias]
+    idField: datasetid
+    removeFields: [field_alias]
+    qryParams: AND (global_field = true)
   fieldProfile:
     fbf: huxb-sqsm
     removeFields:
@@ -51,3 +55,15 @@ fbfs:
     fields: [columnid, null_count, missing_count, actual_count, cardinality, completeness, distinctness, uniqueness, min_field_length, avg_field_length, max_field_length, min_value, max_value, mean, median, mode, range, sum, standard_deviation, variance, mean_absolute_deviation, _5, _25, _50, _75, _95, iqr, kurtosis, skewness ]
     idField: datasetid
     qryParams:
+  assetInventoryRelatedDatasets:
+    fbf: c8w6-4ptn
+    fields: [u_id as datasetid, description ]
+    idField:
+    removeFields: [u_id as datasetid]
+    qryParams:
+  masterDDRelatedDatasets:
+    fbf: 8zp7-ik63
+    fields: [ datasetid, dataset_name, count(*) as global_count]
+    idField:
+    removeFields: [count(*) as global_count]
+    qryParams: GROUP BY datasetid, dataset_name ORDER BY COUNT(*) DESC LIMIT 50
