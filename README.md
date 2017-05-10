@@ -2,8 +2,8 @@
 
 ## DataSF's Metadata API
 
-### [API Method Documentation](http://localhost:3000/docs/#!/default/getDatasetDetails)
-* Uses Swagger to self document. Start the app on your local host and click [here](http://localhost:3000/docs/#!/default/getDatasetDetails)
+### [API Method Documentation](http://metadatasf.tk/docs/#!/default/)
+* Uses Swagger to self document. For all API methods, click [here](http://metadatasf.tk/docs/#!/default/)
 
 ### Get Up and Running
 * npm install

@@ -8,7 +8,7 @@
     "produces": [
         "application/json"
     ],
-    "host": "localhost:3000",
+    "host": "metadatasf:3000",
     "basePath": "/api/v1",
     "paths": {
         "/datasetdetails/i98e-djp9": {
