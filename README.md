@@ -2,8 +2,9 @@
 
 ## About
 
-This repo contains a node express REST API that wrangles and consolidates various metadata socrata's opendata platform.
-This app's API methods return easy to use json metadata objects for a given dataset. The overall goal is to simiply the process of querying dataset metadata information for upstream client apps.
+* This repo contains a node express REST API that wrangles and consolidates various metadata from Socrata's opendata platform.
+* The API methods return easy-to-use json metadata objects for a given dataset.
+* It's overall goal is to simplify the process of obtaining metadata data for upstream client facing apps.
 
 ## [API Method Documentation](http://metadatasf.tk/docs/#!/default/)
 * Uses Swagger to self document. For all API methods, click [here](http://metadatasf.tk/docs/#!/default/).
