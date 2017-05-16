@@ -1,7 +1,8 @@
 baseUrl: https://data.sfgov.org/resource/
 socrata_config_fn: /Users/j9/Desktop/metadata-explorer-api/configs/socrata_config.yaml
 #socrata_config_fn: /var/www/open-metadata-API/configs/socrata_config.yaml
-datasetDetailsFieldMapping: {creation_date:  createdAt, data_change_frequency:  dataChangeFrequency, department: publishingDepartment, publishing_frequency: publishingFrequency,record_count: rowCount,rowLabel: rowLabel,program_link: programLink,last_update_date_data: rowsUpdatedAt,data_notes: notes, nbeid: dataId, datasetid: id, license: licenseName, licenseLink: licenseLink}
+datasetDetailsMapping: {creation_date:  createdAt, data_change_frequency:  dataChangeFrequency, department: publishingDepartment, publishing_frequency: publishingFrequency,record_count: rowCount,rowLabel: rowLabel,program_link: programLink,last_update_date_data: rowsUpdatedAt,data_notes: notes, nbeid: dataId, datasetid: id, license: licenseName, licenseLink: licenseLink}
+fieldDetailsMapping: {field_alias: alias, actual_count: count, field_definition: description, columnid: id, api_key: key, min_value: min, max_value: max, field_name: name, null_count: null, global_field_definition: globalDescription }
 
 fbfs:
   datasetProfiles:
@@ -18,21 +19,21 @@ fbfs:
     qryParams: AND (point_count > 0 OR multipoint_count > 0 OR multipoint_count > 0 OR polygon_count > 0 OR multipolygon_count > 0)
   assetInventory:
     fbf: c8w6-4ptn
-    fields: [u_id as datasetid, category, creation_date, data_change_frequency, data_notes, data_provided_by, description, geographic_unit, keywords, type, last_update_date_data, license, name, owner, publishing_frequency, program_link]
+    fields: [u_id as datasetid, category, creation_date, data_change_frequency, data_notes, data_provided_by, description, geographic_unit, keywords, type, last_update_date_data, license, name, owner, publishing_frequency, program_link, 'CASE( license = ''Open Data Commons Public Domain Dedication and License'', ''https://opendatacommons.org/licenses/pddl/1.0/'', license != ''Open Data Commons Public Domain Dedication and License'', null)  as licenseLink']
     idField: u_id
-    removeFields: [u_id as datasetid]
+    removeFields: [u_id as datasetid, 'CASE( license = ''Open Data Commons Public Domain Dedication and License'', ''https://opendatacommons.org/licenses/pddl/1.0/'', license != ''Open Data Commons Public Domain Dedication and License'', null)  as licenseLink']
     qryParams:
-  masterDDDataset:
-    fbf: 8zp7-ik63
-    fields: [datasetid, data_dictionary_attached,  attachment_url]
-    idField: datasetid
-    qryParams: LIMIT 1
-    removeFields:
+  #masterDDDataset:
+    #fbf: 8zp7-ik63
+    #fields: [datasetid, data_dictionary_attached,  attachment_url]
+    #idField: datasetid
+    #qryParams: LIMIT 1
+    #removeFields:
   masterDDField:
     fbf: 8zp7-ik63
-    fields: [columnid, field_name, field_alias, field_type, field_definition, field_type_flag, api_key, field_documented, global_field, global_field_definition ]
+    fields: [columnid, field_name, field_alias, field_type, field_definition, field_type_flag, api_key, field_documented, global_field, global_field_definition, socrata_field_type as format ]
     idField: datasetid
-    removeFields:
+    removeFields: [socrata_field_type as format]
     qryParams:
   masterDDGlobalFields:
     fbf: 8zp7-ik63
@@ -70,3 +71,8 @@ fbfs:
     idField:
     removeFields: [count(*) as global_count]
     qryParams: GROUP BY datasetid, dataset_name ORDER BY COUNT(*) DESC LIMIT 50
+  datasetAttachments:
+    fbf: a2hm-yzs6
+    fields: [attachment_name as name, attachment_url as url, data_dictionary_attached as data_dictionary ]
+    idField: dataset_id
+    removeFields: [attachment_name as name, attachment_url as url, data_dictionary_attached as data_dictionary ]

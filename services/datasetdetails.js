@@ -7,13 +7,23 @@ var _l = require('lodash')
 class DatasetDetailsService {
 
   getDatasetDetails (fbf) {
-    let datasets = ['datasetProfiles', 'assetInventory', 'masterDDDataset', 'datasetProfilesIsGeo']
+    let datasets = ['datasetProfiles', 'assetInventory', 'datasetProfilesIsGeo', 'datasetAttachments']
     let data = {
       fbf: null,
       getHasGeo: function (allData) {
-        if (allData.length >= 4) {
-          if (allData[3].length < 1) {
-            allData[3] = [{'datasetid': fbf, 'hasGeo': false}]
+        if (allData.length >= 3) {
+          if (allData[2].length < 1) {
+            allData[2] = [{'datasetid': fbf, 'hasGeo': false}]
+          }
+        }
+        return allData
+      },
+      combinedAttachments: function(allData){
+        if (allData.length >= 3) {
+          if (allData[3].length > 0 ) {
+            allData[3] = [{'datasetid': fbf, 'attachments': allData[3]}]
+          }else{
+            allData[3] = [{'datasetid': fbf, 'attachments': null}]
           }
         }
         return allData
@@ -40,7 +50,7 @@ class DatasetDetailsService {
               return obj
             })
           }
-          results = UtilsService.mapKeys(results, UtilsService.fieldConfigs.datasetDetailsFieldMapping)
+          results = UtilsService.mapKeys(results, UtilsService.fieldConfigs.datasetDetailsMapping)
           return results
         }
       }
@@ -54,8 +64,9 @@ class DatasetDetailsService {
     function main (fbf) {
       data.fbf = fbf
       // call all functions asyncronously, and wait for all API calls to complete; then suppy data to combine and reduce functions
-      return Promise.all([data.datasetProfiles(), data.assetInventory(), data.masterDDDataset(), data.datasetProfilesIsGeo()])
+      return Promise.all([data.datasetProfiles(), data.assetInventory(), data.datasetProfilesIsGeo(), data.datasetAttachments()])
         .then(data.getHasGeo)
+        .then(data.combinedAttachments)
         .then(data.getCombined)
     }
     return main

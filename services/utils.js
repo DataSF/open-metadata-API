@@ -5,10 +5,8 @@ var _l = require('lodash')
 class UtilsService {
 
   constructor () {
-
     var fieldConfigFn = '/Users/j9/Desktop/metadata-explorer-api/configs/fieldConfig.yaml'
-
-    //var fieldConfigFn = '/var/www/open-metadata-API/configs/fieldConfig.yaml'
+    // var fieldConfigFn = '/var/www/open-metadata-API/configs/fieldConfig.yaml'
     this.fieldConfigs = this.readConfigs(fieldConfigFn)
     var socrataConfigFn = this.fieldConfigs.socrata_config_fn
     this.socrataConfigs = this.readConfigs(socrataConfigFn)
@@ -42,11 +40,10 @@ class UtilsService {
     }
   }
 
-  mapKeys(results, keyMapp){
+  mapKeys (results, keyMapp) {
     return results.map(function (obj) {
       return _l.mapKeys(obj, function (value, key) {
         if (_l.has(keyMapp, key)) {
-          console.log("in here")
           return keyMapp[key]
         } else {
           return key
@@ -67,7 +64,7 @@ class UtilsService {
       qry = qry + '?$query=SELECT%20' + fields + '%20WHERE%20'
       qry = qry + '%20' + qryOtherStuff
       if (qryParams) {
-        qry = qry + " " + qryParams
+        qry = qry + ' ' + qryParams
       }
     } else {
       qry = qry + '?$query=SELECT%20' + fields + '%20WHERE%20' + idField + '%20=%27'
@@ -77,9 +74,11 @@ class UtilsService {
       }
     }
     // console.log('*****')
-    // console.log(qry)
+    console.log(qry)
     // console.log('*****')
     return qry
   }
+
  }
+
 module.exports = new UtilsService()
