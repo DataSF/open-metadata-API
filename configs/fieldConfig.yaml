@@ -7,7 +7,7 @@ fieldDetailsMapping: {field_alias: alias, actual_count: count, field_definition:
 fbfs:
   datasetProfiles:
     fbf: 8ez2-fksg
-    fields: [datasetid, nbeid, record_count, field_count, documented_count, documented_percentage, global_field_count, global_field_percentage, days_since_last_updated, days_since_first_created, department,  dupe_record_count,  dupe_record_percent]
+    fields: [datasetid, nbeid, record_count, field_count, documented_count, documented_percentage, global_field_count, global_field_percentage, days_since_last_updated, days_since_first_created, department,  dupe_record_count,  dupe_record_percent, rowLabel, rowIdentifier]
     idField: datasetid
     removeFields:
     qryParams:

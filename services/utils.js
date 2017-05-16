@@ -74,7 +74,7 @@ class UtilsService {
       }
     }
     // console.log('*****')
-    console.log(qry)
+    // console.log(qry)
     // console.log('*****')
     return qry
   }
