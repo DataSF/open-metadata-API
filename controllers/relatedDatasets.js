@@ -1,6 +1,10 @@
 'use strict'
 
-var RelatedDatasetsService = require('/var/www/open-metadata-API/services/relatedDatasets.js')
+//var RelatedDatasetsService = require('/var/www/open-metadata-API/services/relatedDatasets.js')
+var RelatedDatasetsService = require('/Users/j9/Desktop/metadata-explorer-api/services/relatedDatasets.js')
+
+
+
 
 class RelatedDatasetsController {
 

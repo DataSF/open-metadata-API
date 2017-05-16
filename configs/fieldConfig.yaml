@@ -1,6 +1,8 @@
 baseUrl: https://data.sfgov.org/resource/
-#socrata_config_fn: /Users/j9/Desktop/metadata-explorer-api/configs/socrata_config.yaml
-socrata_config_fn: /var/www/open-metadata-API/configs/socrata_config.yaml
+socrata_config_fn: /Users/j9/Desktop/metadata-explorer-api/configs/socrata_config.yaml
+#socrata_config_fn: /var/www/open-metadata-API/configs/socrata_config.yaml
+datasetDetailsFieldMapping: {creation_date:  createdAt, data_change_frequency:  dataChangeFrequency, department: publishingDepartment, publishing_frequency: publishingFrequency,record_count: rowCount,rowLabel: rowLabel,program_link: programLink,last_update_date_data: rowsUpdatedAt,data_notes: notes, nbeid: dataId, datasetid: id, license: licenseName, licenseLink: licenseLink}
+
 fbfs:
   datasetProfiles:
     fbf: 8ez2-fksg

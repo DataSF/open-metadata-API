@@ -1,8 +1,8 @@
 'use strict'
-let UtilsService = require('/var/www/open-metadata-API/services/utils.js')
+let UtilsService = require('./utils.js')
 let request = require('request-promise')
 var _ = require('underscore')
-
+var _l = require('lodash')
 class FieldDetailsService {
 
   getFieldDetails (fbf) {
@@ -28,7 +28,7 @@ class FieldDetailsService {
                   obj[key] = null
                 })
               }
-              return obj
+
             })
           }
           return results

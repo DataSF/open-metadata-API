@@ -1,7 +1,7 @@
 'use strict'
 
-var FieldDetailsService = require('/var/www/open-metadata-API/services/fielddetails.js')
-
+// var FieldDetailsService = require('/var/www/open-metadata-API/services/fielddetails.js')
+var FieldDetailsService = require('/Users/j9/Desktop/metadata-explorer-api/services/fielddetails.js')
 class FieldDetailsController {
 
   constructor (router) {

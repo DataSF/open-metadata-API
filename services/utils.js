@@ -1,10 +1,14 @@
 'use strict'
 let readYaml = require('read-yaml')
+var _l = require('lodash')
 
 class UtilsService {
 
   constructor () {
-    var fieldConfigFn = '/var/www/open-metadata-API/configs/fieldConfig.yaml'
+
+    var fieldConfigFn = '/Users/j9/Desktop/metadata-explorer-api/configs/fieldConfig.yaml'
+
+    //var fieldConfigFn = '/var/www/open-metadata-API/configs/fieldConfig.yaml'
     this.fieldConfigs = this.readConfigs(fieldConfigFn)
     var socrataConfigFn = this.fieldConfigs.socrata_config_fn
     this.socrataConfigs = this.readConfigs(socrataConfigFn)
@@ -36,6 +40,19 @@ class UtilsService {
       'uri': this.makeQry(fbf, datasetname, qryOtherStuff),
       'json': true
     }
+  }
+
+  mapKeys(results, keyMapp){
+    return results.map(function (obj) {
+      return _l.mapKeys(obj, function (value, key) {
+        if (_l.has(keyMapp, key)) {
+          console.log("in here")
+          return keyMapp[key]
+        } else {
+          return key
+        }
+      })
+    })
   }
 
   makeQry (fbf, datasetName, qryOtherStuff) {
