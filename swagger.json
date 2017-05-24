@@ -72,13 +72,13 @@
         "datasetdetails": {
             "type": "object",
             "properties": {
-                "datasetid": {
+                "id": {
                     "type": "string"
                 },
-                "nbeid": {
+                "dataId": {
                     "type": "string"
                 },
-                "record_count": {
+                "rowCount": {
                     "type": "string"
                 },
                 "field_count": {
@@ -102,16 +102,16 @@
                 "days_since_first_created": {
                     "type": "string"
                 },
-                "department": {
+                "publishingDepartment": {
                     "type": "string"
                 },
                 "category": {
                     "type": "string"
                 },
-                "creation_date": {
+                "createdAt": {
                     "type": "string"
                 },
-                "data_change_frequency": {
+                "dataChangeFrequency": {
                     "type": "string"
                 },
                 "data_notes": {
@@ -132,10 +132,10 @@
                 "type": {
                     "type": "string"
                 },
-                "last_update_date_data": {
+                "rowsUpdatedAt": {
                     "type": "string"
                 },
-                "license": {
+                "licenseName": {
                     "type": "string"
                 },
                 "name": {
@@ -144,27 +144,36 @@
                 "owner": {
                     "type": "string"
                 },
-                "publishing_frequency": {
+                "publishingFrequency": {
                     "type": "string"
                 },
-                "data_dictionary_attached": {
-                    "type": "string"
-                },
-                "attachment_url": {
+                "attachments": {
                     "type": "string"
                 },
                 "hasGeo": {
                     "type": "boolean"
+                },
+                "rowLabel": {
+                    "type": "string"
+                },
+                "rowIdentifier": {
+                    "type": "string"
+                },
+                 "licenseLink": {
+                    "type": "string"
+                },
+                 "programLink": {
+                    "type": "string"
                 }
             }
         },
         "fielddetails": {
             "type": "object",
             "properties": {
-                "columid": {
+                "id": {
                     "type": "string"
                 },
-                "null_count": {
+                "null": {
                     "type": "number"
                 },
                 "missing_count": {
@@ -194,10 +203,10 @@
                 "max_field_length": {
                     "type": "number"
                 },
-                "min_value": {
+                "min": {
                     "type": "number"
                 },
-                "max_value": {
+                "max": {
                     "type": "number"
                 },
                 "mean": {
@@ -215,22 +224,22 @@
                 "is_primary_key_candidate": {
                     "type": "boolean"
                 },
-                "field_name": {
+                "name": {
                     "type": "string"
                 },
-                "field_alias": {
+                "alias": {
                     "type": "string"
                 },
                 "field_type": {
                     "type": "string"
                 },
-                "field_definition": {
+                "description": {
                     "type": "string"
                 },
                 "field_type_flag": {
                     "type": "string"
                 },
-                "api_key": {
+                "key": {
                     "type": "string"
                 },
                 "field_documented": {
@@ -239,10 +248,13 @@
                 "global_field": {
                     "type": "string"
                 },
-                "global_field_definition": {
+                "globalDescription": {
                     "type": "string"
                 },
                 "isCategory": {
+                    "type": "boolean"
+                },
+                "format": {
                     "type": "boolean"
                 }
             }
