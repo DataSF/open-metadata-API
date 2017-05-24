@@ -5,8 +5,8 @@ var _l = require('lodash')
 class UtilsService {
 
   constructor () {
-    var fieldConfigFn = '/Users/j9/Desktop/metadata-explorer-api/configs/fieldConfig.yaml'
-    //var fieldConfigFn = '../configs/fieldConfig.yaml'
+    //var fieldConfigFn = '/Users/j9/Desktop/metadata-explorer-api/configs/fieldConfig.yaml'
+    var fieldConfigFn = '/var/www/open-metadata-API/configs/fieldConfig.yaml'
     this.fieldConfigs = this.readConfigs(fieldConfigFn)
     var socrataConfigFn = this.fieldConfigs.socrata_config_fn
     this.socrataConfigs = this.readConfigs(socrataConfigFn)
