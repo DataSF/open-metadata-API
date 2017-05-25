@@ -8,6 +8,24 @@ class FieldDetailsService {
     let datasets = ['fieldProfile', 'masterDDField', 'fieldProfileCategory']
     let data = {
       fbf: null,
+      alterFieldTypes: function(allData){
+        let typeCast = {
+          'calendar_date': 'date',
+          'currency': 'number',
+          'money': 'number',
+          'checkbox': 'boolean', 
+          'timestamp': 'date',
+          'numeric': 'number'
+        }
+        let typeCastKeys = Object.keys(typeCast)
+        let results = _.map(allData, function (item) {
+            if(typeCastKeys.includes(item.type)){
+              item.type = typeCast[item.type]
+            }
+            return item
+          })
+        return results
+      },
       getCombined: function (allData) {
         if (!allData) {
           return [{'error': 'ERROR! No Data Found!'}]
@@ -46,6 +64,7 @@ class FieldDetailsService {
       // call all functions asyncronously, and wait for all API calls to complete; then suppy data to combine and reduce functions
       return Promise.all([data.fieldProfile(), data.masterDDField(), data.fieldProfileCategory()])
         .then(data.getCombined)
+        .then(data.alterFieldTypes)
     }
     return main
   }
