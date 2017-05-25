@@ -33,7 +33,7 @@ fbfs:
     fbf: 8zp7-ik63
     fields: [columnid, field_name, field_alias, field_type as type, field_definition, field_type_flag, api_key, field_documented, global_field, global_field_definition, socrata_field_type as format ]
     idField: datasetid
-    removeFields: [socrata_field_type as format]
+    removeFields: [socrata_field_type as format, field_type as type]
     qryParams:
   masterDDGlobalFields:
     fbf: 8zp7-ik63
