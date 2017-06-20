@@ -5,7 +5,7 @@ var _ = require('underscore')
 class FieldDetailsService {
 
   getFieldDetails (fbf) {
-    let datasets = ['fieldProfile', 'masterDDField', 'fieldProfileCategory']
+    let datasets = ['fieldProfileStats', 'masterDDField', 'fieldProfileCategory',]
     let data = {
       fbf: null,
       alterFieldTypes: function(allData){
@@ -62,7 +62,7 @@ class FieldDetailsService {
     function main (fbf) {
       data.fbf = fbf
       // call all functions asyncronously, and wait for all API calls to complete; then suppy data to combine and reduce functions
-      return Promise.all([data.fieldProfile(), data.masterDDField(), data.fieldProfileCategory()])
+      return Promise.all([data.fieldProfileStats(), data.masterDDField(), data.fieldProfileCategory()])
         .then(data.getCombined)
         .then(data.alterFieldTypes)
     }
