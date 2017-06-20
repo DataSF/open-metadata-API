@@ -5,7 +5,7 @@ var _ = require('underscore')
 class FieldDetailsService {
 
   getFieldDetails (fbf) {
-    let datasets = ['fieldProfileStats', 'masterDDField', 'fieldProfileCategory']
+    let datasets = ['fieldProfile', 'masterDDField', 'fieldProfileCategory']
     let data = {
       fbf: null,
       alterFieldTypes: function(allData){
