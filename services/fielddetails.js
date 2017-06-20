@@ -5,7 +5,7 @@ var _ = require('underscore')
 class FieldDetailsService {
 
   getFieldDetails (fbf) {
-    let datasets = ['fieldProfile', 'masterDDField', 'fieldProfileCategory']
+    let datasets = ['fieldProfileStats', 'masterDDField', 'fieldProfileCategory']
     let data = {
       fbf: null,
       alterFieldTypes: function(allData){
@@ -13,7 +13,7 @@ class FieldDetailsService {
           'calendar_date': 'date',
           'currency': 'number',
           'money': 'number',
-          'checkbox': 'boolean', 
+          'checkbox': 'boolean',
           'timestamp': 'date',
           'numeric': 'number'
         }

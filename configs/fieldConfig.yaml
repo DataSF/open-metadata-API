@@ -56,7 +56,7 @@ fbfs:
   fieldProfileStats:
     fbf: huxb-sqsm
     removeFields:
-    fields: [columnid, null_count, missing_count, actual_count, cardinality, completeness, distinctness, uniqueness, min_field_length, avg_field_length, max_field_length, min_value, max_value, mean, median, mode, range, sum, standard_deviation, variance, mean_absolute_deviation, _5, _25, _50, _75, _95, iqr, kurtosis, skewness ]
+    fields: [columnid, null_count, missing_count, actual_count, cardinality, completeness, distinctness, uniqueness, min_field_length, avg_field_length, max_field_length, min_value, max_value, mean, median, mode, range, is_primary_key_candidate, sum, standard_deviation, variance, mean_absolute_deviation, _5, _25, _50, _75, _95, iqr, kurtosis, skewness, profile_last_updt_dt, days_since_last_updated, last_updt_dt_data ]
     idField: datasetid
     qryParams:
   assetInventoryRelatedDatasets:
