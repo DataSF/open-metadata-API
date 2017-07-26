@@ -52,7 +52,7 @@ fbfs:
     removeFields: [true as isCategory]
     fields: [columnid, true as isCategory ]
     idField: datasetid
-    qryParams: AND ( cardinality > 1 and cardinality <= 125)
+    qryParams: AND ( cardinality > 1 and cardinality <= 500)
   fieldProfileStats:
     fbf: huxb-sqsm
     removeFields:
