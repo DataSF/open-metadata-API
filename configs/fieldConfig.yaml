@@ -1,6 +1,6 @@
 baseUrl: https://data.sfgov.org/resource/
-#socrata_config_fn: /Users/j9/Desktop/metadata-explorer-api/configs/socrata_config.yaml
-socrata_config_fn: /var/www/open-metadata-API/configs/socrata_config.yaml
+socrata_config_fn: /Users/j9/Desktop/metadata-explorer-api/configs/socrata_config.yaml
+#socrata_config_fn: /var/www/open-metadata-API/configs/socrata_config.yaml
 datasetDetailsMapping: {creation_date:  createdAt, data_change_frequency:  dataChangeFrequency, department: publishingDepartment, publishing_frequency: publishingFrequency,record_count: rowCount,rowLabel: rowLabel,program_link: programLink,last_update_date_data: rowsUpdatedAt,data_notes: notes, nbeid: dataId, datasetid: id, license: licenseName, licenseLink: licenseLink}
 fieldDetailsMapping: {field_alias: alias, actual_count: count, field_definition: description, columnid: id, api_key: key, min_value: min, max_value: max, field_name: name, null_count: null, global_field_definition: globalDescription }
 
@@ -67,10 +67,10 @@ fbfs:
     qryParams:
   masterDDRelatedDatasets:
     fbf: 8zp7-ik63
-    fields: [ datasetid, dataset_name, count(*) as global_count]
+    fields: [ datasetid, dataset_name, department, count(*) as global_count]
     idField:
     removeFields: [count(*) as global_count]
-    qryParams: GROUP BY datasetid, dataset_name ORDER BY COUNT(*) DESC LIMIT 50
+    qryParams: GROUP BY datasetid, dataset_name, department HAVING COUNT(*) > 3 ORDER BY COUNT(*) DESC LIMIT 50
   datasetAttachments:
     fbf: a2hm-yzs6
     fields: [attachment_name as name, attachment_url as url, data_dictionary_attached as data_dictionary ]
