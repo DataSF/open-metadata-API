@@ -61,7 +61,7 @@ fbfs:
     qryParams:
   assetInventoryRelatedDatasets:
     fbf: c8w6-4ptn
-    fields: [u_id as datasetid, description ]
+    fields: [u_id as datasetid, category, keywords, description ]
     idField:
     removeFields: [u_id as datasetid]
     qryParams:

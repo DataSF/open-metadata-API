@@ -12,6 +12,7 @@ class RelatedDatasetsService {
       getRelated: function (allData) {
         let qryOtherStuff = allData[0].map((a) => ("field_alias = '" + a.field_alias + "'"))
         qryOtherStuff = qryOtherStuff.join(' OR ')
+        qryOtherStuff = '(' + qryOtherStuff + ') AND (datasetid != \'' + fbf + '\' )'
         return request(UtilsService.getRequestOptions(fbf, 'masterDDRelatedDatasets', qryOtherStuff)).then(function (response) {
           let qryOtherStuff2 = response.map((a) => ("u_id = '" + a.datasetid + "'"))
           qryOtherStuff2 = qryOtherStuff2.join(' OR ')
