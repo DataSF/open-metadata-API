@@ -70,7 +70,7 @@ fbfs:
     fields: [ datasetid, dataset_name, department, count(*) as global_count]
     idField:
     removeFields: [count(*) as global_count]
-    qryParams: GROUP BY datasetid, dataset_name, department HAVING COUNT(*) > 3 ORDER BY COUNT(*), department DESC LIMIT 50
+    qryParams: GROUP BY datasetid, dataset_name, department HAVING COUNT(*) > 3 ORDER BY COUNT(*) DESC LIMIT 50
   datasetAttachments:
     fbf: a2hm-yzs6
     fields: [attachment_name as name, attachment_url as url, data_dictionary_attached as data_dictionary ]
