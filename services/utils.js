@@ -73,9 +73,9 @@ class UtilsService {
         qry = qry + '%20' + qryParams
       }
     }
-     // console.log('*****')
-     // console.log(qry)
-     // console.log('*****')
+    // console.log('*****')
+    // console.log(qry)
+    // console.log('*****')
     return qry
   }
 

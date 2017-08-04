@@ -10,6 +10,10 @@ class RelatedDatasetsService {
     let data = {
       fbf: null,
       getRelated: function (allData) {
+        // dataset has no global fields; return empty response...
+        if(allData[0].length == 0 ){
+          return [[]]
+        }
         let qryOtherStuff = allData[0].map((a) => ("field_alias = '" + a.field_alias + "'"))
         qryOtherStuff = qryOtherStuff.join(' OR ')
         qryOtherStuff = '(' + qryOtherStuff + ') AND (datasetid != \'' + fbf + '\' )'
