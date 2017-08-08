@@ -7,7 +7,7 @@ fieldDetailsMapping: {field_alias: alias, actual_count: count, field_definition:
 fbfs:
   datasetProfiles:
     fbf: 8ez2-fksg
-    fields: [datasetid, nbeid, record_count, field_count, documented_count, documented_percentage, global_field_count, global_field_percentage, days_since_last_updated, days_since_first_created, department,  dupe_record_count,  dupe_record_percent, rowLabel, rowIdentifier, text_count, numeric_count, boolean_count, timestamp_count, time_count, blob_count, point_count, multipoint_count, line_count, multiline_count, polygon_count, multipolygon_count]
+    fields: [datasetid, nbeid, record_count, field_count, documented_count, documented_percentage, global_field_count, global_field_percentage, days_since_last_updated, days_since_first_created, department,  dupe_record_count,  dupe_record_percent, rowLabel, rowIdentifier, text_count, numeric_count, boolean_count, timestamp_count, time_count, blob_count, point_count, multipoint_count, line_count, multiline_count, polygon_count, multipolygon_count, last_updt_dt_data]
     idField: datasetid
     removeFields:
     qryParams:
@@ -19,7 +19,7 @@ fbfs:
     qryParams: AND (point_count > 0 OR multipoint_count > 0 OR multipoint_count > 0 OR polygon_count > 0 OR multipolygon_count > 0)
   assetInventory:
     fbf: c8w6-4ptn
-    fields: [u_id as datasetid, category, creation_date, data_change_frequency, data_notes, data_provided_by, description, geographic_unit, keywords, type, last_update_date_data, license, name, owner, publishing_frequency, program_link, 'CASE( license = ''Open Data Commons Public Domain Dedication and License'', ''https://opendatacommons.org/licenses/pddl/1.0/'', license != ''Open Data Commons Public Domain Dedication and License'', null)  as licenseLink']
+    fields: [u_id as datasetid, category, creation_date, data_change_frequency, data_notes, data_provided_by, description, geographic_unit, keywords, type, license, name, owner, publishing_frequency, program_link, 'CASE( license = ''Open Data Commons Public Domain Dedication and License'', ''https://opendatacommons.org/licenses/pddl/1.0/'', license != ''Open Data Commons Public Domain Dedication and License'', null)  as licenseLink']
     idField: u_id
     removeFields: [u_id as datasetid, 'CASE( license = ''Open Data Commons Public Domain Dedication and License'', ''https://opendatacommons.org/licenses/pddl/1.0/'', license != ''Open Data Commons Public Domain Dedication and License'', null)  as licenseLink']
     qryParams:
