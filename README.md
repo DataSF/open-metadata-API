@@ -13,5 +13,3 @@
 * point the app to your metadatasets on your open data portal by filling out the config file, fieldConfig.yaml.
 * npm install
 * npm start
-
-cool
