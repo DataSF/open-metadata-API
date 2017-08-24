@@ -1,4 +1,4 @@
-# Server Administration Cheat Sheet For Metadata API
+# Server Administration Cheat Sheet For the Metadata API
 
 ## Server IP: 162.xxx.xxx.94 (Digital Ocean Box)
 
