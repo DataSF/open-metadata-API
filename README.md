@@ -14,5 +14,4 @@
 * npm install
 * npm start
 
-cool
 
