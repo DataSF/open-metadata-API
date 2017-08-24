@@ -1,7 +1,6 @@
 # Open Metadata API
 
 ## About
-
 * This repo contains a node express REST API that wrangles and consolidates various metadata from Socrata's opendata platform.
 * The API methods return easy-to-use json metadata objects for a given dataset.
 * It's overall goal is to simplify the process of obtaining metadata data for upstream client facing apps.
