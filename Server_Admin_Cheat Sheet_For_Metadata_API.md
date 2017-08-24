@@ -5,7 +5,8 @@
 ## Source Files for API are located in /var/www/open-metadata-API
 
 ## Background
-The metadata api is a node.js express app
+The metadata api is a node.js express app.
+Usage Documentation can be found on a swagger page at: (http://metadata.datasf.org/docs/#!/default/)
 
 ## Accessing the Server
 1. Log into the server via:
@@ -14,11 +15,11 @@ The metadata api is a node.js express app
 
 
 ## Restarting the API/Express App
-We are using pm2, a process manager for node.js to continuously run the express.js app. You can read more about pm2 here
+We are using pm2, a process manager for node.js to continuously run the express.js app. You can read more about pm2 [here] (http://pm2.keymetrics.io/docs/usage/quick-start/)
 
 1. Ssh into the box
 
-2. Check to see if the API/express app is actually running. You will need to first switch to the pm2user to see if the app is running. PM2 saves data under user's '~/.pm2' folder, so other users can not see your PM2 process with 'pm2 status'.  (see this stackoverflow for more explaination, here)
+2. Check to see if the API/express app is actually running. You will need to first switch to the pm2user to see if the app is running. PM2 saves data under user's '~/.pm2' folder, so other users can not see your PM2 process with 'pm2 status'.  (see this stackoverflow for more explaination, [here] (https://stackoverflow.com/questions/32178443/how-to-run-pm2-so-other-server-users-are-able-to-access-the-process))
   `$ sudo su pm2user`
   `$ pm2 list`
   Or this also works: `$pm2 status metadata_api_app`
@@ -37,7 +38,7 @@ We are using pm2, a process manager for node.js to continuously run the express.
       4268 ?        Ssl    1:14 node /var/www/open-metadata-API/ metadata_api_app
       23712 pts/0    S+     0:00 grep node
     ```
-  -Then, using the example above, run the command:
+  - Then, using the example above, run the command:
     `$  kill -9 pid processid`
     So from the example above it would be:
     `kill -9 4268`
