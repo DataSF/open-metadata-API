@@ -15,5 +15,5 @@
 * npm start
 * we used nginx and pm2 to run, serve and manage the API processes
 
-###[Server Adminstration] (https://github.com/DataSF/open-metadata-API/blob/master/Server_Admin_Cheat%20Sheet_For_Metadata_API.md)
+### [Server Adminstration] (https://github.com/DataSF/open-metadata-API/blob/master/Server_Admin_Cheat%20Sheet_For_Metadata_API.md)
 * A cheat sheet on how to adminster the api can be found [here] (https://github.com/DataSF/open-metadata-API/blob/master/Server_Admin_Cheat%20Sheet_For_Metadata_API.md)
