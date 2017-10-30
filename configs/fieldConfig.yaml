@@ -16,7 +16,7 @@ fbfs:
     fields: [datasetid, true as hasGeo]
     idField: datasetid
     removeFields: [true as hasGeo]
-    qryParams: AND (point_count > 0 OR multipoint_count > 0 OR multipoint_count > 0 OR polygon_count > 0 OR multipolygon_count > 0)
+    qryParams: AND (point_count > 0 OR multipoint_count > 0 OR multipoint_count > 0 OR polygon_count > 0 OR multipolygon_count > 0 OR line_count > 0 OR multiline_count > 0)
   assetInventory:
     fbf: c8w6-4ptn
     fields: [u_id as datasetid, category, creation_date, data_change_frequency, data_provided_by, description, geographic_unit, keywords, type, license, name, owner, publishing_frequency, program_link, 'CASE( license = ''Open Data Commons Public Domain Dedication and License'', ''https://opendatacommons.org/licenses/pddl/1.0/'', license != ''Open Data Commons Public Domain Dedication and License'', null)  as licenseLink']
